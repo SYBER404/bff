@@ -291,6 +291,7 @@ def menu():
 		menu()
 		
 def bot_share():
+	header = {"authority":"graph.facebook.com","cache-control":"max-age=0","sec-ch-ua-mobile":"?0","user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.66 Safari/537.36"}
 	print("")
 	uiz = input(f"{garis} masukan link post : {H} ")
 	limit = int(input(f"{garis} masukan limit : {H} "))
