@@ -102,7 +102,7 @@ def ex_run():
 	tanggal = thn_ + bln_ + tgl_
 	exp = expired_script[2] + expired_script[1] + expired_script[0]
 	if tanggal >= exp:
-		x=f"{P2}script dmf sudah kadaluarsa mohon dimaafkan sebesar² nya untuk kalian yang memakai script dmf:(\nkarena author ambf sudah bosan update script ini dll:(\nthanks for you sudah memakai script dmf yakk\nsemoga sehat selalu dan dilancarkan rejeki nya aminnn\n"
+		x=f"{P2}script bff sudah kadaluarsa mohon dimaafkan sebesar² nya untuk kalian yang memakai script dmf:(\nkarena author ambf sudah bosan update script ini dll:(\nthanks for you sudah memakai script dmf yakk\nsemoga sehat selalu dan dilancarkan rejeki nya aminnn\n"
 		vprint(panel(x,style=f"{warna_warni_rich}"))
 		exit()
 	else:
@@ -128,7 +128,7 @@ def cek_expired_script():
 	tanggal = thn_ + bln_ + tgl_
 	exp = expired_script[2] + expired_script[1] + expired_script[0]
 	if tanggal >= exp:
-		x=f"{P2}script ambf sudah kadaluarsa mohon dimaafkan sebesar² nya untuk kalian yang memakai script ambf:(\nkarena author ambf sudah bosan update script ini dll:(\nthanks for you sudah memakai script ambf yakk\nsemoga sehat selalu dan dilancarkan rejeki nya aminnn\n"
+		x=f"{P2}script bff sudah kadaluarsa mohon dimaafkan sebesar² nya untuk kalian yang memakai script ambf:(\nkarena author ambf sudah bosan update script ini dll:(\nthanks for you sudah memakai script ambf yakk\nsemoga sehat selalu dan dilancarkan rejeki nya aminnn\n"
 		vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
 		exit()
 	else:
@@ -277,13 +277,19 @@ def menu():
 	x=f"\t\t{P2}{hhl} {K2}{nama}\n\t\t{P2}tanggal lahirmu : {H2}{pko}\n\t\t{P2}ID kamu : {H2}{tumbal_id}\n\t\t{P2}IP kamu : {H2}{IP}\n\t\t{P2}negara kamu : {H2}{nibba}\n\t\t{P2}tanggal sekarang : {H2}{sekarang}"
 	vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
 	print("")
-	x=f"{P2}[01] bot share facebook\n{P2}[02] bot share profil + kata² & random\n{P2}[{M2}00{P2}] exit"
+	x=f"{P2}[01] bot share facebook\n{P2}[02] bot share profil + kata² & random\n{P2}[03] ganti cookie\n{P2}[{M2}00{P2}] exit"
 	vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
 	c_mat = input(f"{garis} pilih : {H}")
 	if c_mat in ["1","01"]:
 		bot_share()
 	elif c_mat in ["2","02"]:
 		bot_komen()
+	elif c_mat in ["3","03"]:
+		jalan(f"{garis} sedang menghapus cookie ")
+		os.system("rm -rf cookie.txt")
+		os.system("rm -rf token.txt")
+		jalan(f"{garis} succes menghapus cookie ")
+		login_cookie()
 	elif c_mat in ["0", "00"]:
 		exit()
 	else:
@@ -294,6 +300,7 @@ def bot_share():
 	header = {"authority":"graph.facebook.com","cache-control":"max-age=0","sec-ch-ua-mobile":"?0","user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.66 Safari/537.36"}
 	print("")
 	uiz = input(f"{garis} masukan link post : {H} ")
+	uiz2 = input(f"{garis} masukan link post ke 2 : {H}")
 	coy = int(input(f"{garis} masukan limit : {H} "))
 	x=f"{P2}pencet {H2}ctrl+z untuk menghentikan bot share!!"
 	vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
@@ -301,11 +308,12 @@ def bot_share():
 	token = open('token.txt', 'r').read()
 	coki = {"cookie":cookie}
 	runc= random.choice([K,M,U,O,B,H])
+	idz = random.choice([uiz2,uiz])
 	print("")
 	try:
 		for HikmatXD in range(coy):
 			HikmatXD+=1
-			ress = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link={uiz}&published=0&access_token={token}",headers=header, cookies=coki).json()
+			ress = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link={idz}&published=0&access_token={token}",headers=header, cookies=coki).json()
 			if "id" in ress:
 				sys.stdout.write(f"\r ({datetime.datetime.now().strftime('%H:%M:%S')})|{P}[{runc}•{P}] succesfull {runc}{HikmatXD}{P}/{coy} ");sys.stdout.flush()
 			else:
