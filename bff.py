@@ -300,7 +300,7 @@ def bot_share():
 	header = {"authority":"graph.facebook.com","cache-control":"max-age=0","sec-ch-ua-mobile":"?0","user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.66 Safari/537.36"}
 	print("")
 	uiz = input(f"{garis} masukan link post : {H} ")
-	uiz2 = input(f"{garis} masukan link post ke 2 : {H}")
+	#uiz2 = input(f"{garis} masukan link post ke 2 : {H}")
 	coy = int(input(f"{garis} masukan limit : {H} "))
 	x=f"{P2}pencet {H2}ctrl+z untuk menghentikan bot share!!"
 	vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
@@ -308,12 +308,12 @@ def bot_share():
 	token = open('token.txt', 'r').read()
 	coki = {"cookie":cookie}
 	runc= random.choice([K,M,U,O,B,H])
-	idz = random.choice([uiz2,uiz])
+	#idz = random.choice([uiz2,uiz])
 	print("")
 	try:
 		for HikmatXD in range(coy):
 			HikmatXD+=1
-			ress = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link={idz}&published=0&access_token={token}",headers=header, cookies=coki).json()
+			ress = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link={uiz}&published=0&access_token={token}",headers=header, cookies=coki).json()
 			if "id" in ress:
 				sys.stdout.write(f"\r ({datetime.datetime.now().strftime('%H:%M:%S')})|{P}[{runc}•{P}] succesfull {runc}{HikmatXD}{P}/{coy} ");sys.stdout.flush()
 			else:
