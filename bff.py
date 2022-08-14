@@ -202,7 +202,7 @@ def login_cookie():
 			login_cookie() 
 			
 def comen(cookie):
-	waktu = str(datetime.now().strftime('%H:%M:%S'))
+	waktu = str(datetime.datetime.now().strftime('%H:%M:%S'))
 	_hari_   = {'Sunday':'Minggu','Monday':'Senin','Tuesday':'Selasa','Wednesday':'Rabu','Thursday':'Kamis','Friday':'Jumat','Saturday':'Sabtu'}[str(datetime.now().strftime("%A"))]
 	kuki = cookie
 	toket = open("token.txt","r").read()
@@ -300,13 +300,14 @@ def bot_share():
 	cookie = open('cookie.txt', 'r').read()
 	token = open('token.txt', 'r').read()
 	coki = {"cookie":cookie}
+	runc= random.choice([K,M,U,O,B,H])
 	print("")
 	try:
 		for HikmatXD in range(limit):
 			HikmatXD+=1
 			ress = ses.post(f"https://graph.facebook.com/v13.0/me/feed?link={uiz}&published=0&access_token={token}",headers=header, cookies=coki).json()
 			if "id" in ress:
-				sys.stdout.write(f"\r \t\t{P}[{warna_warni_biasa}•{P}] succesfull {warna_warni_biasa}{HikmatXD}{P}/{limit} ");sys.stdout.flush()
+				sys.stdout.write(f"\r \t\t{P}[{runc}•{P}] succesfull {runc}{HikmatXD}{P}/{limit} ");sys.stdout.flush()
 			else:
 				x=f"{P2}akun anda terkena spam komen/share!! "
 				vprint(panel(x,style=f"{warna_warni_rich_cerah}"))
